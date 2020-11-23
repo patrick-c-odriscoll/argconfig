@@ -5,6 +5,7 @@ This takes the same format as the argparse.ArgumentParser class; however
 it adds the feature of setting a default yaml file for base configuration
 to override the default set in the code. Usage has the following overwrite
 priority:
+
 command line > config file > default set in code
 
 This enables a flexible configuration based, commandline interface options
