@@ -12,6 +12,7 @@ __email__ = "patrick.c.odriscoll@gmail.com"
 
 class argconfig(argparse.ArgumentParser):
   def __init__(self, config=None, *args, **kargs,):
+    """ Initialization of the class """
     super().__init__(*args,**kargs)
     if config is not None:
       self.config = config
@@ -19,14 +20,17 @@ class argconfig(argparse.ArgumentParser):
         with open(config,'r') as f:
           self.parms = yaml.safe_load(f)
       except:
-        print('Failed to read config yaml file')
         pass
-    return 
+    return
   
   def add_argument(self, *args, **kargs):
     try:
       kargs['default'] = self.getConfig(args,kargs['default'])
     except:
+      try:
+          kargs['default'] = self.getConfig(args,None)
+      except:
+        pass
       pass
     super().add_argument(*args,**kargs)
     return
@@ -43,6 +47,8 @@ class argconfig(argparse.ArgumentParser):
 if __name__ == "__main__":
   parser = argconfig(description='argparse + yaml config file example',config='./example.yaml')
   parser.add_argument('-f','--foo', type=str, default='testing',help='foo (default=testing, config=test)')
+  parser.add_argument('--bar',                                  help='bar (default=None, config = 2.0)')
   args = parser.parse_args()
 
   print(args.foo)
+  print(args.bar)
