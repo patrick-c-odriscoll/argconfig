@@ -29,7 +29,7 @@ While:
 ```
 python argconfig.py
 ```
-yeilds, by loading the example.py config file:
+yeilds, by loading the example.yaml config file:
 ```
 foo: test1
 bar: 2.0
