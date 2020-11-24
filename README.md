@@ -14,22 +14,45 @@ at scale.
 ## Requirements
 * Python 3.7+
 * pyyaml
+* argparse
 
 ## Example
-To use the default example (see the source code of argconfig.py)
+### Config File
+Use the example.yaml config file in the same directory as your example python code:
 ```
-python argconfig.py --foo test --bar 3.0
+$ cat example.yaml
+foo : test1
+bar : 2.0
 ```
-yeilds, by loading the command line settings:
+### Example Code
+The example python code setsup the variables foo and bar to equal 'testing' and 2.0 respectively. (Note the syntax is almost identical as argparse.ArgumentParser.)
+```
+import argconfig
+
+parser = argconfig.argconfig(description='argparse + yaml config file example',config='./example.yaml')
+parser.add_argument('-f','--foo', type=str, default='testing',help='foo (default=testing, config=test)')
+parser.add_argument('--bar',                                  help='bar (default=None, config = 2.0)')
+args = parser.parse_args()
+
+print('foo:',args.foo)
+print('bar:',args.bar)
+```
+### Example Command Line Usage
+Run time of the example with foo and bar set by command line:
+```
+python example.py --foo test --bar 3.0
+```
+returns the following two print statements:
 ```
 foo: test
 bar: 3.0
 ```
-While:
+
+While the values set in example.yaml is used when the values are not overriden by the command line:
 ```
-python argconfig.py
+python example.py
 ```
-yeilds, by loading the example.py config file:
+returns the following two print statements:
 ```
 foo: test1
 bar: 2.0
