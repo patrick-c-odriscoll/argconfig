@@ -25,13 +25,16 @@ foo : test1
 bar : 2.0
 ```
 ### Example Code
-The example python code setsup the variables foo and bar to equal 'testing' and 2.0 respectively. (Note the syntax is almost identical as argparse.ArgumentParser.)
+The example python code setsup the variables foo and bar to equal 'testing' and 2.0 respectively. 
+(Note the syntax is almost identical as argparse.ArgumentParser.)
 ```
 import argconfig
 
-parser = argconfig.argconfig(description='argparse + yaml config file example',config='./example.yaml')
-parser.add_argument('-f','--foo', type=str, default='testing',help='foo (default=testing, config=test)')
-parser.add_argument('--bar',                                  help='bar (default=None, config = 2.0)')
+parser = argconfig.argconfig(description='argconfig example',config='./example.yaml')
+parser.add_argument('-f','--foo', type=str, default='testing',
+                    help='foo (default=testing, config=test)')
+parser.add_argument('--bar',
+                    help='bar (default=None, config = 2.0)')
 args = parser.parse_args()
 
 print('foo:',args.foo)
