@@ -13,9 +13,9 @@ setup(
   author_email="patrick.c.odriscoll@gmail.com",
   license="MIT",
   install_requirements = ['pyyaml',
-                          'argparse']
+                          'argparse'],
   classifiers = ['Intended Audience :: Developers', 
                  'Programming Language :: Python', 
-                 'License :: OSI Approved :: MIT License']
+                 'License :: OSI Approved :: MIT License'],
   zip_safe=False
 )
