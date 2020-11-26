@@ -30,7 +30,7 @@ The example python code setsup the variables foo and bar to equal 'testing' and 
 ```
 import argconfig
 
-parser = argconfig.argconfig(description='argconfig example',config='./example.yaml')
+parser = argconfig.ArgumentParser(description='argconfig example',config='./example.yaml')
 parser.add_argument('-f','--foo', type=str, default='testing',
                     help='foo (default=testing, config=test)')
 parser.add_argument('--bar',
