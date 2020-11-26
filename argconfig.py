@@ -10,7 +10,7 @@ __maintainer__ = "Patrick C O\'Driscoll"
 __email__ = "patrick.c.odriscoll@gmail.com"
 
 
-class argconfig(argparse.ArgumentParser):
+class ArgumentParser(argparse.ArgumentParser):
   """ Argconfig:
       Improvement on the argparse.ArgumentParser class. It adds the functionality of a
       configuration file. The order of load importance is as follows:
@@ -71,7 +71,7 @@ if __name__ == "__main__":
       foo : testing
       bar : implicit None
   """
-  parser = argconfig(description='argparse + yaml config file example',config='./example.yaml')
+  parser = ArgumentParser(description='argparse + yaml config file example',config='./example.yaml')
   parser.add_argument('-f','--foo', type=str, default='testing',help='foo (default=testing, config=test)')
   parser.add_argument('--bar',                                  help='bar (default=None, config = 2.0)')
   args = parser.parse_args()
